@@ -16,5 +16,8 @@ ENV NODE_ENV=production
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 COPY --from=builder /app/dist ./dist
+COPY drizzle.config.ts ./drizzle.config.ts
+COPY drizzle ./drizzle
+COPY src/db/schema.ts ./src/db/schema.ts
 EXPOSE 3001
 CMD ["npm", "run", "start"]
