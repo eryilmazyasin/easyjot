@@ -67,4 +67,8 @@ export class InMemoryExpenseRepository implements ExpenseRepository {
 
     return updatedExpense;
   }
+
+  public getAllRecords(): ExpenseRecord[] {
+    return [...this.expenses.values()];
+  }
 }

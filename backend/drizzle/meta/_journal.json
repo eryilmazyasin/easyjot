@@ -15,6 +15,13 @@
       "when": 1785787789584,
       "tag": "0001_silent_network",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1786045547155,
+      "tag": "0002_luxuriant_greymalkin",
+      "breakpoints": true
     }
   ]
 }

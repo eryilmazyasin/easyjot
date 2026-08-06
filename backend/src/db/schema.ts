@@ -18,6 +18,7 @@ export const users = pgTable(
     email: varchar("email", { length: 320 }).notNull(),
     password: varchar("password", { length: 255 }).notNull(),
     baseCurrency: varchar("base_currency", { length: 3 }).notNull().default("TRY"),
+    monthlyBudget: numeric("monthly_budget", { precision: 14, scale: 2 }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (table) => [uniqueIndex("users_email_unique_idx").on(table.email)],

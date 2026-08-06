@@ -7,6 +7,7 @@ export interface AuthUserProfile {
   id: string;
   email: string;
   baseCurrency: string;
+  monthlyBudget: number | null;
   createdAt: Date;
 }
 

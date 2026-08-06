@@ -4,6 +4,7 @@ import { db } from "../db/index.js";
 import { users } from "../db/schema.js";
 import type {
   CreateUserRecord,
+  UpdateUserBudgetSettingsRecord,
   UserRecord,
   UserRepository,
 } from "./user.repository.types.js";
@@ -13,6 +14,7 @@ const userSelection = {
   email: users.email,
   passwordHash: users.password,
   baseCurrency: users.baseCurrency,
+  monthlyBudget: users.monthlyBudget,
   createdAt: users.createdAt,
 };
 
@@ -50,6 +52,19 @@ export class DrizzleUserRepository implements UserRepository {
       .from(users)
       .where(eq(users.id, id))
       .limit(1);
+
+    return user ?? null;
+  }
+
+  public async updateBudgetSettings(
+    id: string,
+    changes: UpdateUserBudgetSettingsRecord,
+  ): Promise<UserRecord | null> {
+    const [user] = await db
+      .update(users)
+      .set(changes)
+      .where(eq(users.id, id))
+      .returning(userSelection);
 
     return user ?? null;
   }

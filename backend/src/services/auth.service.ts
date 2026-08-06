@@ -58,6 +58,7 @@ const toUserProfile = (user: UserRecord): AuthUserProfile => ({
   id: user.id,
   email: user.email,
   baseCurrency: user.baseCurrency,
+  monthlyBudget: user.monthlyBudget === null ? null : Number(user.monthlyBudget),
   createdAt: user.createdAt,
 });
 
